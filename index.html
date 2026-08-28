@@ -237,7 +237,6 @@
     display:flex; align-items:center; justify-content:center;
     position:relative;
     transform:rotate(-11deg) scale(1);
-    animation:stampDown 0.7s cubic-bezier(.2,1.4,.4,1) 0.15s both;
     box-shadow:0 0 0 4px rgba(179,58,46,0.08);
   }
   .stamp::before{
@@ -248,10 +247,24 @@
     font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; line-height:1.7;
   }
   .stamp-text .big{font-size:19px; font-weight:700; display:block; letter-spacing:0.1em; margin:2px 0;}
+  .stamp.stamp-impact{
+    animation:stampDown 0.5s cubic-bezier(.36,2.2,.5,1) both;
+  }
+  .stamp.stamp-impact::after{
+    content:''; position:absolute; inset:-16px; border-radius:50%;
+    border:2px solid var(--rust-500);
+    opacity:0; animation:stampRing 0.55s ease-out 0.28s both;
+  }
   @keyframes stampDown{
-    0%{opacity:0; transform:rotate(-11deg) scale(1.9); filter:blur(2px);}
-    70%{opacity:1;}
-    100%{opacity:1; transform:rotate(-11deg) scale(1); filter:blur(0);}
+    0%{opacity:0; transform:rotate(-11deg) scale(2.4); filter:blur(4px);}
+    50%{opacity:1; filter:blur(0);}
+    62%{transform:rotate(-11deg) scale(0.88);}
+    80%{transform:rotate(-11deg) scale(1.05);}
+    100%{transform:rotate(-11deg) scale(1);}
+  }
+  @keyframes stampRing{
+    0%{opacity:0.85; transform:scale(0.55);}
+    100%{opacity:0; transform:scale(1.4);}
   }
   .stamp-ring-label{
     position:absolute; inset:-26px; font-family:var(--font-mono); font-size:10.5px;
@@ -1067,9 +1080,9 @@
         if (!res.ok) throw new Error('Formspree responded ' + res.status);
         form.style.display = 'none';
         confirmStamp.classList.add('show');
-        stampGraphic.style.animation = 'none';
+        stampGraphic.classList.remove('stamp-impact');
         void stampGraphic.offsetWidth;
-        stampGraphic.style.animation = '';
+        stampGraphic.classList.add('stamp-impact');
       } catch (err) {
         btn.disabled = false;
         btn.textContent = original;
