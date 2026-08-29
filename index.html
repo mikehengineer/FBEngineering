@@ -363,6 +363,20 @@
   .svc-copy-block h4{font-family:var(--font-display); font-size:16px; font-weight:600; color:var(--ink-100); margin-bottom:8px;}
   .svc-copy-block p{color:var(--ink-300); font-size:14.5px; line-height:1.65;}
   .svc-copy-block p.svc-tbd{color:var(--ink-400); font-style:italic;}
+  .svc-outcome{color:var(--ink-100)!important; font-weight:500;}
+  .svc-detail{max-height:0; overflow:hidden; transition:max-height .35s ease, opacity .35s ease; opacity:0;}
+  .svc-copy-block.expanded .svc-detail{max-height:900px; opacity:1;}
+  .svc-detail p{margin-top:10px;}
+  .svc-detail p:first-child{margin-top:0;}
+  .svc-more-toggle{
+    display:inline-flex; align-items:center; gap:5px; margin-top:10px;
+    background:none; border:none; padding:0; cursor:pointer;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:0.04em; text-transform:uppercase;
+    color:var(--blue-500); transition:color .2s;
+  }
+  .svc-more-toggle:hover{color:var(--brass-300);}
+  .svc-more-toggle-icon{display:inline-block; transition:transform .25s ease;}
+  .svc-copy-block.expanded .svc-more-toggle-icon{transform:rotate(45deg);}
   .svc-topic-list{list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:8px 24px; margin:14px 0 18px;}
   .svc-topic-list li{font-size:14px; color:var(--ink-200); padding-left:18px; position:relative;}
   .svc-topic-list li::before{content:'/'; position:absolute; left:0; color:var(--brass-400); font-family:var(--font-mono); font-weight:600;}
@@ -570,7 +584,7 @@
         </div>
       </div>
       <div class="nav-dropdown">
-        <a href="about.html">Projects</a>
+        <a href="about.html#track-record">Projects</a>
         <div class="nav-dropdown-menu">
           <a href="about.html#track-record">Track Record</a>
         </div>
@@ -611,10 +625,10 @@
 
 <div class="trust-bar" id="trustBar">
   <div class="wrap trust-row">
-    <div class="trust-item"><div class="trust-num" data-target="40" data-suffix="+">0</div><div class="trust-label">Municipalities Served</div></div>
-    <div class="trust-item"><div class="trust-num" data-target="18" data-suffix=" yrs">0</div><div class="trust-label">As Chief Building Officials</div></div>
-    <div class="trust-item"><div class="trust-num" data-target="70" data-suffix="+">0</div><div class="trust-label">Licenses &amp; Certifications</div></div>
-    <div class="trust-item"><div class="trust-num" data-target="5" data-suffix="">0</div><div class="trust-label">Disciplines In-House</div></div>
+    <div class="trust-item"><div class="trust-num">15+</div><div class="trust-label">Municipalities Served</div></div>
+    <div class="trust-item"><div class="trust-num">25+</div><div class="trust-label">Years as Acting Building Officials</div></div>
+    <div class="trust-item"><div class="trust-num">40+</div><div class="trust-label">State &amp; National Licenses &amp; Certifications</div></div>
+    <div class="trust-item"><div class="trust-num">40+</div><div class="trust-label">Civic Structural &amp; MEP Projects</div></div>
   </div>
 </div>
 
@@ -676,11 +690,19 @@
           <div class="svc-panel-inner">
             <div class="svc-copy-block">
               <h4>Civil</h4>
-              <p>Full site civil design for commercial, industrial, and multi-family development — grading and drainage, stormwater management and detention, sanitary sewer and water distribution, and land development planning. Because our team has reviewed submissions from the other side of the counter, our civil packages are built to clear municipal review the first time.</p>
+              <p class="svc-outcome">Site civil design built to pass municipal review the first time.</p>
+              <div class="svc-detail">
+                <p>Full site civil design for commercial, industrial, and multi-family development — grading and drainage, stormwater management and detention, sanitary sewer and water distribution, and land development planning. Because our team has reviewed submissions from the other side of the counter, our civil packages are built to clear municipal review the first time.</p>
+              </div>
+              <button class="svc-more-toggle" type="button" aria-expanded="false"><span class="svc-more-label">Read more</span><span class="svc-more-toggle-icon">+</span></button>
             </div>
             <div class="svc-copy-block">
               <h4>Building</h4>
-              <p>Structural, mechanical, electrical, and plumbing design for new construction, additions, and renovations across commercial, industrial, and multi-family occupancies. One team handles every discipline in-house, so there are no coordination gaps between separate consultants and no surprises when your drawings hit code review.</p>
+              <p class="svc-outcome">Structural, mechanical, electrical &amp; plumbing design — one team, no coordination gaps.</p>
+              <div class="svc-detail">
+                <p>Structural, mechanical, electrical, and plumbing design for new construction, additions, and renovations across commercial, industrial, and multi-family occupancies. One team handles every discipline in-house, so there are no coordination gaps between separate consultants and no surprises when your drawings hit code review.</p>
+              </div>
+              <button class="svc-more-toggle" type="button" aria-expanded="false"><span class="svc-more-label">Read more</span><span class="svc-more-toggle-icon">+</span></button>
             </div>
             <a href="#contact" class="service-link">Discuss a project →</a>
           </div>
@@ -697,15 +719,27 @@
           <div class="svc-panel-inner">
             <div class="svc-copy-block">
               <h4>Pre-Design Code Analysis Services</h4>
-              <p>Several key steps are required for the successful development of a set of project drawings and specifications. How a firm coordinates their plans with local codes and regulations, as well as plans developed by other consultants or disciplines, has a significant impact on the success of the project. Submitting inaccurate or insufficient construction documents to the local jurisdiction will have an adverse effect on the project. Your firm will spend many hours revising and providing addenda addressing unexpected items for re-submittal and possible delays in the project schedule. F&amp;B Engineering provides pre-design analysis services for architectural and engineering firms that will provide valuable insight regarding code and regulatory conflicts, as well as disconnects between disciplines.</p>
+              <p class="svc-outcome">Catch code and coordination conflicts before they cost you a resubmittal.</p>
+              <div class="svc-detail">
+                <p>Several key steps are required for the successful development of a set of project drawings and specifications. How a firm coordinates their plans with local codes and regulations, as well as plans developed by other consultants or disciplines, has a significant impact on the success of the project. Submitting inaccurate or insufficient construction documents to the local jurisdiction will have an adverse effect on the project. Your firm will spend many hours revising and providing addenda addressing unexpected items for re-submittal and possible delays in the project schedule. F&amp;B Engineering provides pre-design analysis services for architectural and engineering firms that will provide valuable insight regarding code and regulatory conflicts, as well as disconnects between disciplines.</p>
+              </div>
+              <button class="svc-more-toggle" type="button" aria-expanded="false"><span class="svc-more-label">Read more</span><span class="svc-more-toggle-icon">+</span></button>
             </div>
             <div class="svc-copy-block">
               <h4>Post-Submission Plan Review Services</h4>
-              <p>Plans that ultimately go to governmental plan reviewers at the local level are never completely free of issues and questions. This is quite evident when the design firm receives correspondence from the government building official indicating several items of non-compliance. F&amp;B Engineering provides professional post-submission plan review services designed to provide analysis and solutions for re-submittal of all items of non-compliance.</p>
+              <p class="svc-outcome">Expert analysis and a clear path to resolve every review comment.</p>
+              <div class="svc-detail">
+                <p>Plans that ultimately go to governmental plan reviewers at the local level are never completely free of issues and questions. This is quite evident when the design firm receives correspondence from the government building official indicating several items of non-compliance. F&amp;B Engineering provides professional post-submission plan review services designed to provide analysis and solutions for re-submittal of all items of non-compliance.</p>
+              </div>
+              <button class="svc-more-toggle" type="button" aria-expanded="false"><span class="svc-more-label">Read more</span><span class="svc-more-toggle-icon">+</span></button>
             </div>
             <div class="svc-copy-block">
               <h4>Board of Building Appeals &amp; Expert Witness Services</h4>
-              <p>The impression that your firm makes with a set of project plans is primarily based on the accuracy and completeness of the plans and specifications developed. The number and significance of comments issued by governmental plan reviewers at the local level and during team reviews is reflective of the end product and your firm. Sometimes technical communication is not evenly understood by all parties involved and we must move forward with the adjudication process. F&amp;B Engineering provides analysis reports, and expert witness services to assist owners, architectural, and engineering firms with Board of Building Appeals hearings.</p>
+              <p class="svc-outcome">Analysis reports and expert witness support when a project heads to appeal.</p>
+              <div class="svc-detail">
+                <p>The impression that your firm makes with a set of project plans is primarily based on the accuracy and completeness of the plans and specifications developed. The number and significance of comments issued by governmental plan reviewers at the local level and during team reviews is reflective of the end product and your firm. Sometimes technical communication is not evenly understood by all parties involved and we must move forward with the adjudication process. F&amp;B Engineering provides analysis reports, and expert witness services to assist owners, architectural, and engineering firms with Board of Building Appeals hearings.</p>
+              </div>
+              <button class="svc-more-toggle" type="button" aria-expanded="false"><span class="svc-more-label">Read more</span><span class="svc-more-toggle-icon">+</span></button>
             </div>
             <a href="#contact" class="service-link">Discuss a project →</a>
           </div>
@@ -722,19 +756,35 @@
           <div class="svc-panel-inner">
             <div class="svc-copy-block">
               <h4>Building Official Services</h4>
-              <p>We can provide building official services by experienced Master Code Professionals (MCP) &amp; Certified Building Officials (CBO) as required by International Building Codes, State and local building code requirements. Short-term supportive services are also available to provide assistance and mentoring for building officials. Additionally, services may include pre-application &amp; post-application meetings and code consultations with owners, owner's representatives, government agencies.</p>
+              <p class="svc-outcome">MCP- and CBO-certified support and mentoring for your department, on demand.</p>
+              <div class="svc-detail">
+                <p>We can provide building official services by experienced Master Code Professionals (MCP) &amp; Certified Building Officials (CBO) as required by International Building Codes, State and local building code requirements. Short-term supportive services are also available to provide assistance and mentoring for building officials. Additionally, services may include pre-application &amp; post-application meetings and code consultations with owners, owner's representatives, government agencies.</p>
+              </div>
+              <button class="svc-more-toggle" type="button" aria-expanded="false"><span class="svc-more-label">Read more</span><span class="svc-more-toggle-icon">+</span></button>
             </div>
             <div class="svc-copy-block">
               <h4>Plan Review Services</h4>
-              <p>We provide plan review services throughout the United States according to all International Code Council (ICC) codes, and specific State and local codes. We provide our clients with a formal plan review report with all relevant code items of noncompliance signed by a certified plans examiner. We offer quick turnaround times even for the most complex projects. All plans are reviewed by a code expert with specialized expertise in building, electrical, mechanical, plumbing, and NFPA fire protection disciplines.</p>
+              <p class="svc-outcome">Nationwide ICC plan review with fast turnaround and a certified examiner's signature.</p>
+              <div class="svc-detail">
+                <p>We provide plan review services throughout the United States according to all International Code Council (ICC) codes, and specific State and local codes. We provide our clients with a formal plan review report with all relevant code items of noncompliance signed by a certified plans examiner. We offer quick turnaround times even for the most complex projects. All plans are reviewed by a code expert with specialized expertise in building, electrical, mechanical, plumbing, and NFPA fire protection disciplines.</p>
+              </div>
+              <button class="svc-more-toggle" type="button" aria-expanded="false"><span class="svc-more-label">Read more</span><span class="svc-more-toggle-icon">+</span></button>
             </div>
             <div class="svc-copy-block">
               <h4>On-site Budgeting &amp; Economic Analysis Services</h4>
-              <p>We have been in your shoes! Our experienced building officials with many years of running governmental departments offer budgeting analysis tools and solutions with guidance on software implementation for your specific department to operate economically.</p>
+              <p class="svc-outcome">Budgeting tools and software guidance from officials who've run a department themselves.</p>
+              <div class="svc-detail">
+                <p>We have been in your shoes! Our experienced building officials with many years of running governmental departments offer budgeting analysis tools and solutions with guidance on software implementation for your specific department to operate economically.</p>
+              </div>
+              <button class="svc-more-toggle" type="button" aria-expanded="false"><span class="svc-more-label">Read more</span><span class="svc-more-toggle-icon">+</span></button>
             </div>
             <div class="svc-copy-block">
               <h4>Board of Building Appeals &amp; Expert Witness Services</h4>
-              <p>We provide professional consulting services for building departments in areas of appeal hearings and expert witness service. Sometimes technical communication is not evenly understood by all parties involved and we must move forward with the adjudication process. F&amp;B Engineering provides supportive analysis reports from experts in respective disciplines, attends adjudications, assists with adjudication preparation, and offers expert witness services.</p>
+              <p class="svc-outcome">Supportive analysis and expert witness services when your department heads to adjudication.</p>
+              <div class="svc-detail">
+                <p>We provide professional consulting services for building departments in areas of appeal hearings and expert witness service. Sometimes technical communication is not evenly understood by all parties involved and we must move forward with the adjudication process. F&amp;B Engineering provides supportive analysis reports from experts in respective disciplines, attends adjudications, assists with adjudication preparation, and offers expert witness services.</p>
+              </div>
+              <button class="svc-more-toggle" type="button" aria-expanded="false"><span class="svc-more-label">Read more</span><span class="svc-more-toggle-icon">+</span></button>
             </div>
             <a href="#contact" class="service-link">Request a review →</a>
           </div>
@@ -751,14 +801,22 @@
           <div class="svc-panel-inner">
             <div class="svc-copy-block">
               <h4>Private Building Owners</h4>
-              <p>F&amp;B Engineering provides accessibility consulting services for owners, attorneys, planners, architects, engineers, and developers to ensure that people with physical impairments, visual impairments and hearing impairments can use the facilities. We also inspect and analyze existing buildings in order to prepare reports and solutions for compliance of ADA Title III requirements.</p>
-              <p>Public accommodations must comply with basic nondiscrimination requirements that prohibit exclusion, segregation, and unequal treatment. They also must comply with specific requirements related to architectural standards for new and altered buildings; reasonable modifications to policies, practices, and procedures; effective communication with people with hearing, vision, or speech disabilities; and other access requirements. Additionally, public accommodations must remove barriers in existing buildings where it is easy to do so without much difficulty or expense, given the public accommodation's resources.</p>
+              <p class="svc-outcome">ADA Title III compliance reports and solutions for owners, architects &amp; developers.</p>
+              <div class="svc-detail">
+                <p>F&amp;B Engineering provides accessibility consulting services for owners, attorneys, planners, architects, engineers, and developers to ensure that people with physical impairments, visual impairments and hearing impairments can use the facilities. We also inspect and analyze existing buildings in order to prepare reports and solutions for compliance of ADA Title III requirements.</p>
+                <p>Public accommodations must comply with basic nondiscrimination requirements that prohibit exclusion, segregation, and unequal treatment. They also must comply with specific requirements related to architectural standards for new and altered buildings; reasonable modifications to policies, practices, and procedures; effective communication with people with hearing, vision, or speech disabilities; and other access requirements. Additionally, public accommodations must remove barriers in existing buildings where it is easy to do so without much difficulty or expense, given the public accommodation's resources.</p>
+              </div>
+              <button class="svc-more-toggle" type="button" aria-expanded="false"><span class="svc-more-label">Read more</span><span class="svc-more-toggle-icon">+</span></button>
             </div>
             <div class="svc-copy-block">
               <h4>State &amp; Local Governments</h4>
-              <p>F&amp;B Engineering provides accessibility consulting services to State and local governments to ensure that people with physical impairments, visual impairments and hearing impairments can use the facilities. We also inspect and analyze existing buildings in order to prepare reports and solutions for compliance of ADA Title II requirements.</p>
-              <p>State and local governments are required to follow specific architectural standards in new construction and alteration of their buildings. They also must relocate programs or otherwise provide access in inaccessible older buildings, and communicate effectively with people who have hearing, vision, or speech disabilities. Public entities are not required to take actions that would result in undue financial and administrative burdens. They are required to make reasonable modifications to policies, practices, and procedures where necessary to avoid discrimination, unless they can demonstrate that doing so would fundamentally alter the nature of the service, program, or activity being provided.</p>
-              <p><strong>All services are provided by a certified accessibility code expert with specialized expertise in accessible design, plan review, and inspection.</strong></p>
+              <p class="svc-outcome">ADA Title II guidance for new construction, older buildings &amp; public programs.</p>
+              <div class="svc-detail">
+                <p>F&amp;B Engineering provides accessibility consulting services to State and local governments to ensure that people with physical impairments, visual impairments and hearing impairments can use the facilities. We also inspect and analyze existing buildings in order to prepare reports and solutions for compliance of ADA Title II requirements.</p>
+                <p>State and local governments are required to follow specific architectural standards in new construction and alteration of their buildings. They also must relocate programs or otherwise provide access in inaccessible older buildings, and communicate effectively with people who have hearing, vision, or speech disabilities. Public entities are not required to take actions that would result in undue financial and administrative burdens. They are required to make reasonable modifications to policies, practices, and procedures where necessary to avoid discrimination, unless they can demonstrate that doing so would fundamentally alter the nature of the service, program, or activity being provided.</p>
+                <p><strong>All services are provided by a certified accessibility code expert with specialized expertise in accessible design, plan review, and inspection.</strong></p>
+              </div>
+              <button class="svc-more-toggle" type="button" aria-expanded="false"><span class="svc-more-label">Read more</span><span class="svc-more-toggle-icon">+</span></button>
             </div>
             <a href="#contact" class="service-link">Schedule a consult →</a>
           </div>
@@ -790,9 +848,12 @@
                 <li>Mechanical Code – (IMC &amp; UMC) (All Editions)</li>
                 <li>Plumbing Code – (IPC &amp; UPC) (All Editions)</li>
               </ul>
-              <p>On-site education with materials and instructor-led examples of "real life" problems will provide participants with the confidence needed to be more effective in both technical and administrative functions. We provide the very best educational services by experts with technical engineering degrees and certifications in all disciplines (Accessibility, Civil, Building, Electrical, Mechanical, Fire Protection &amp; Plumbing).</p>
-              <p>F&amp;B Engineering develops educational programs to help businesses stay ahead of customer satisfaction trends. Our custom training integrates participants with tools and solutions that will enable your company to fully realize the benefits of improved productivity. Most importantly, we provide the design, development, and training that ensures your staff can ramp up quickly and realize concrete improvements in technology, communication, and customer satisfaction.</p>
-              <p><em>We offer specialized professional services throughout the United States and American Territories. Government decision-makers should consider F&amp;B Engineering, Inc. when providing your departments with the best professional services.</em></p>
+              <div class="svc-detail">
+                <p>On-site education with materials and instructor-led examples of "real life" problems will provide participants with the confidence needed to be more effective in both technical and administrative functions. We provide the very best educational services by experts with technical engineering degrees and certifications in all disciplines (Accessibility, Civil, Building, Electrical, Mechanical, Fire Protection &amp; Plumbing).</p>
+                <p>F&amp;B Engineering develops educational programs to help businesses stay ahead of customer satisfaction trends. Our custom training integrates participants with tools and solutions that will enable your company to fully realize the benefits of improved productivity. Most importantly, we provide the design, development, and training that ensures your staff can ramp up quickly and realize concrete improvements in technology, communication, and customer satisfaction.</p>
+                <p><em>We offer specialized professional services throughout the United States and American Territories. Government decision-makers should consider F&amp;B Engineering, Inc. when providing your departments with the best professional services.</em></p>
+              </div>
+              <button class="svc-more-toggle" type="button" aria-expanded="false"><span class="svc-more-label">Read more</span><span class="svc-more-toggle-icon">+</span></button>
             </div>
             <a href="#contact" class="service-link">Schedule a consult →</a>
           </div>
@@ -816,7 +877,7 @@
       <div class="eyebrow">Get In Touch</div>
       <h2>Request a plan review</h2>
       <svg class="draw-line" viewBox="0 0 120 4"><line x1="0" y1="2" x2="120" y2="2"/></svg>
-      <p>Send your drawings and project details — we'll scope a review timeline within one business day.</p>
+      <p>Tell us about your project — we'll scope a review timeline within one business day.</p>
     </div>
     <div class="contact-layout">
       <div>
@@ -959,6 +1020,33 @@
     });
   });
 
+  // 0d. Service copy "Read more" toggles (nested inside accordion panels)
+  document.querySelectorAll('.svc-more-toggle').forEach(function(btn){
+    var block = btn.closest('.svc-copy-block');
+    var detail = block.querySelector('.svc-detail');
+    var panel = btn.closest('.svc-panel');
+    var label = btn.querySelector('.svc-more-label');
+    btn.addEventListener('click', function(){
+      var expanding = !block.classList.contains('expanded');
+      block.classList.toggle('expanded', expanding);
+      btn.setAttribute('aria-expanded', expanding ? 'true' : 'false');
+      if(label) label.textContent = expanding ? 'Show less' : 'Read more';
+      if(expanding){
+        detail.style.maxHeight = detail.scrollHeight + 'px';
+      } else {
+        detail.style.maxHeight = detail.scrollHeight + 'px';
+        requestAnimationFrame(function(){ detail.style.maxHeight = '0px'; });
+      }
+      if(panel){
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        detail.addEventListener('transitionend', function resync(){
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          detail.removeEventListener('transitionend', resync);
+        });
+      }
+    });
+  });
+
   // 1. Header ref (used by mobile nav toggle below)
   var header = document.getElementById('siteHeader');
 
@@ -971,27 +1059,7 @@
     // handler on every mousemove. The static gradient below is kept.
   }
 
-  // 3. Animated stat counters (trust bar)
-  function animateCount(el){
-    var target = parseFloat(el.getAttribute('data-target'));
-    var suffix = el.getAttribute('data-suffix') || '';
-    if(reduceMotion){
-      el.textContent = target.toLocaleString() + suffix;
-      return;
-    }
-    var start = null, duration = 1200;
-    function step(ts){
-      if(!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var value = Math.round(target * eased);
-      el.textContent = value.toLocaleString() + suffix;
-      if(progress < 1){ requestAnimationFrame(step); }
-    }
-    requestAnimationFrame(step);
-  }
-
-  // 4. Service index tick-up
+  // 3. Service index tick-up
   function animateIndex(el){
     var target = parseInt(el.getAttribute('data-target'), 10);
     if(reduceMotion){
@@ -1024,7 +1092,6 @@
       });
     });
   }
-  var counterTargets = document.querySelectorAll('.trust-num[data-target]');
   var indexTargets = document.querySelectorAll('.idx-num[data-target]');
 
   if('IntersectionObserver' in window){
@@ -1038,16 +1105,6 @@
     }, {threshold:0.3});
     revealTargets.forEach(function(t){ revealObserver.observe(t); });
 
-    var counterObserver = new IntersectionObserver(function(entries, obs){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          animateCount(entry.target);
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {threshold:0.5});
-    counterTargets.forEach(function(t){ counterObserver.observe(t); });
-
     var indexObserver = new IntersectionObserver(function(entries, obs){
       entries.forEach(function(entry){
         if(entry.isIntersecting){
@@ -1060,7 +1117,6 @@
   } else {
     // Fallback: no IntersectionObserver support, just show final states
     revealTargets.forEach(function(t){ t.classList.add('in-view'); });
-    counterTargets.forEach(animateCount);
     indexTargets.forEach(animateIndex);
   }
 

@@ -363,6 +363,20 @@
   .svc-copy-block h4{font-family:var(--font-display); font-size:16px; font-weight:600; color:var(--ink-100); margin-bottom:8px;}
   .svc-copy-block p{color:var(--ink-300); font-size:14.5px; line-height:1.65;}
   .svc-copy-block p.svc-tbd{color:var(--ink-400); font-style:italic;}
+  .svc-outcome{color:var(--ink-100)!important; font-weight:500;}
+  .svc-detail{max-height:0; overflow:hidden; transition:max-height .35s ease, opacity .35s ease; opacity:0;}
+  .svc-copy-block.expanded .svc-detail{max-height:900px; opacity:1;}
+  .svc-detail p{margin-top:10px;}
+  .svc-detail p:first-child{margin-top:0;}
+  .svc-more-toggle{
+    display:inline-flex; align-items:center; gap:5px; margin-top:10px;
+    background:none; border:none; padding:0; cursor:pointer;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:0.04em; text-transform:uppercase;
+    color:var(--blue-500); transition:color .2s;
+  }
+  .svc-more-toggle:hover{color:var(--brass-300);}
+  .svc-more-toggle-icon{display:inline-block; transition:transform .25s ease;}
+  .svc-copy-block.expanded .svc-more-toggle-icon{transform:rotate(45deg);}
   .svc-topic-list{list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:8px 24px; margin:14px 0 18px;}
   .svc-topic-list li{font-size:14px; color:var(--ink-200); padding-left:18px; position:relative;}
   .svc-topic-list li::before{content:'/'; position:absolute; left:0; color:var(--brass-400); font-family:var(--font-mono); font-weight:600;}
@@ -569,7 +583,7 @@
         </div>
       </div>
       <div class="nav-dropdown">
-        <a href="about.html">Projects</a>
+        <a href="about.html#track-record">Projects</a>
         <div class="nav-dropdown-menu">
           <a href="about.html#track-record">Track Record</a>
         </div>
@@ -598,7 +612,7 @@
       <div class="eyebrow">Get In Touch</div>
       <h2>Request a plan review</h2>
       <svg class="draw-line" viewBox="0 0 120 4"><line x1="0" y1="2" x2="120" y2="2"/></svg>
-      <p>Send your drawings and project details — we'll scope a review timeline within one business day.</p>
+      <p>Tell us about your project — we'll scope a review timeline within one business day.</p>
     </div>
     <div class="contact-layout">
       <div>
@@ -739,6 +753,33 @@
     });
   });
 
+  // 0d. Service copy "Read more" toggles (nested inside accordion panels)
+  document.querySelectorAll('.svc-more-toggle').forEach(function(btn){
+    var block = btn.closest('.svc-copy-block');
+    var detail = block.querySelector('.svc-detail');
+    var panel = btn.closest('.svc-panel');
+    var label = btn.querySelector('.svc-more-label');
+    btn.addEventListener('click', function(){
+      var expanding = !block.classList.contains('expanded');
+      block.classList.toggle('expanded', expanding);
+      btn.setAttribute('aria-expanded', expanding ? 'true' : 'false');
+      if(label) label.textContent = expanding ? 'Show less' : 'Read more';
+      if(expanding){
+        detail.style.maxHeight = detail.scrollHeight + 'px';
+      } else {
+        detail.style.maxHeight = detail.scrollHeight + 'px';
+        requestAnimationFrame(function(){ detail.style.maxHeight = '0px'; });
+      }
+      if(panel){
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        detail.addEventListener('transitionend', function resync(){
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          detail.removeEventListener('transitionend', resync);
+        });
+      }
+    });
+  });
+
   // 1. Header ref (used by mobile nav toggle below)
   var header = document.getElementById('siteHeader');
 
@@ -751,27 +792,7 @@
     // handler on every mousemove. The static gradient below is kept.
   }
 
-  // 3. Animated stat counters (trust bar)
-  function animateCount(el){
-    var target = parseFloat(el.getAttribute('data-target'));
-    var suffix = el.getAttribute('data-suffix') || '';
-    if(reduceMotion){
-      el.textContent = target.toLocaleString() + suffix;
-      return;
-    }
-    var start = null, duration = 1200;
-    function step(ts){
-      if(!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var value = Math.round(target * eased);
-      el.textContent = value.toLocaleString() + suffix;
-      if(progress < 1){ requestAnimationFrame(step); }
-    }
-    requestAnimationFrame(step);
-  }
-
-  // 4. Service index tick-up
+  // 3. Service index tick-up
   function animateIndex(el){
     var target = parseInt(el.getAttribute('data-target'), 10);
     if(reduceMotion){
@@ -804,7 +825,6 @@
       });
     });
   }
-  var counterTargets = document.querySelectorAll('.trust-num[data-target]');
   var indexTargets = document.querySelectorAll('.idx-num[data-target]');
 
   if('IntersectionObserver' in window){
@@ -818,16 +838,6 @@
     }, {threshold:0.3});
     revealTargets.forEach(function(t){ revealObserver.observe(t); });
 
-    var counterObserver = new IntersectionObserver(function(entries, obs){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          animateCount(entry.target);
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {threshold:0.5});
-    counterTargets.forEach(function(t){ counterObserver.observe(t); });
-
     var indexObserver = new IntersectionObserver(function(entries, obs){
       entries.forEach(function(entry){
         if(entry.isIntersecting){
@@ -840,7 +850,6 @@
   } else {
     // Fallback: no IntersectionObserver support, just show final states
     revealTargets.forEach(function(t){ t.classList.add('in-view'); });
-    counterTargets.forEach(animateCount);
     indexTargets.forEach(animateIndex);
   }
 
