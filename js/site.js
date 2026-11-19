@@ -29,7 +29,7 @@
         toggle.focus();
       }
     });
-    window.matchMedia('(min-width: 1100px)').addEventListener('change', function (e) {
+    window.matchMedia('(min-width: 1140px)').addEventListener('change', function (e) {
       if (e.matches) setMenu(false);
     });
   }
@@ -75,7 +75,7 @@
     if (error) error.hidden = true;
     if (button) {
       button.disabled = true;
-      button.textContent = 'Sending…';
+      button.textContent = 'Sending...';
     }
 
     var ctrl = typeof AbortController === 'function' ? new AbortController() : null;
